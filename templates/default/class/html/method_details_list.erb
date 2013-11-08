@@ -3,6 +3,16 @@
     <% @meths.each_with_index do |meth, i| %>
 		<div class="method">
 			<p class="method_desc"><%= meth.docstring %></p>
+
+      <% if meth.has_tag?(:see) %>
+        <p class="tag_title">See Also:</p>
+        <ul class="see">
+          <% for tag in meth.tags(:see) %>
+            <li><%= linkify(tag.name, tag.text) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
 			<h3 class="resource_url"><strong><%= meth.tag(:resource).text %></strong> [<%= meth.tag(:action).text %>]</h3>
 
 			<div class="parameters">	
