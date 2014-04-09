@@ -12,5 +12,6 @@ YARD::Tags::Library.define_tag("Request Fields",                :request_field, 
 YARD::Tags::Library.define_tag("Example Response",              :example_response)
 YARD::Tags::Library.define_tag("Example Response Description",  :example_response_description)
 YARD::Tags::Library.define_tag("Response Fields",               :response_field,    :with_types_and_name)
+YARD::Tags::Library.define_tag("Response Codes",                :response_code,     :with_name)
 
 YARD::Tags::Library.define_tag("Headers",                       :header, :with_name)

@@ -4,7 +4,7 @@ originally by [vWorkApp](http://www.vworkapp.com)
 rewritten for 0.3.0 by [rknLA](http://github.com/rknLA) with substantial help from [lsegal](http://gnuu.org/)
 customized by [spape](http://github.com/spape) for the [MAdeK](http://github.com/zhdk/madek) [API-Documentation](http://medienarchiv.zhdk.ch/api)
 
-A plugin for [Yardoc](http://yardoc.org/) that generates documentation for RESTful web services. 
+A plugin for [Yardoc](http://yardoc.org/) that generates documentation for RESTful web services.
 
 ## Install
     sudo gem install yard-rest
@@ -21,7 +21,7 @@ Visit [MAdeK-Api-Documetnation](http://medienarchiv.zhdk.ch/api) for a demonstra
 
 ## Generating Docs
 
-When using yardoc you ask it to use the "rest" plugin (the --plugin option). For example: 
+When using yardoc you ask it to use the "rest" plugin (the --plugin option). For example:
 
     yardoc --plugin rest --title "Our App's API" --readme "./doc/README_FOR_API"
 
@@ -56,9 +56,11 @@ In addition to starting your comment with the normal RDoc description. The follo
 
 - @required [type] name description. Specifies an argument that must be passed to the service. You can specify as many of these as you need.
 
-- @optional [type] name description. Specifies an optional argument that may be passed to the service. You can specify as many of these as you need. 
+- @optional [type] name description. Specifies an optional argument that may be passed to the service. You can specify as many of these as you need.
 
 - @response_field [type] name description. Further specifies the fields that are returned within the response.
+
+- @response_code code. An HTTP code the response can give (e.g. 200, 404)
 
 ### Examples
 
@@ -97,34 +99,34 @@ Both controller *and* methods must have @resource tags to be included in documen
 ## Example:
 
   ##
-  # A thing characteristic of its kind or illustrating a general rule: 
+  # A thing characteristic of its kind or illustrating a general rule:
   # it's a good example of how European action can produce results | some of these carpets are among the finest examples of the period.
   #
   class ExamplesController
-  
+
     ##
     # Get a collection of examples:
-    # 
+    #
     # @resource /examples
     #
     # @action GET
-    # 
+    #
     # @optional [Boolean] highlight Show only highlighted examples.
     #
-    # @response_field [Array] examples The collection of examples.  
+    # @response_field [Array] examples The collection of examples.
     # @response_field [Integer] examples[].id The id of that example.
     # @response_field [String] examples[].title The title of that example.
     # @response_field [String] examples[].text The text of that example.
     # @response_field [String] examples[].highlight Information if the example is highlighted.
     #
     # @example_request {}
-    # @example_request_description Just requests an index of samples. 
+    # @example_request_description Just requests an index of samples.
     # @example_response {"examples": [{"id":1, "title":"Animals", "text":"Dogs and cats are some.", "highlight":true}, {"id":2, "title":"Computers", "text":"Windows PC or Apple's Macintosh.", "highlight":false}]}
     # @example_response_description Responds with the index of examples.
-    # 
+    #
     # @example_request {"highlight": true}
     # @example_request_description Request only highlighted examples.
-    # @example_response 
+    # @example_response
     #   ```json
     #   {
     #     "examples": [{
@@ -140,14 +142,14 @@ Both controller *and* methods must have @resource tags to be included in documen
     def index
       #...
     end
-  
+
     ##
     # Get a collection of examples:
-    # 
+    #
     # @resource /examples/:id
     #
     # @action GET
-    # 
+    #
     # @required [Integer] id The id of the example.
     #
     # @response_field [Integer] example.id The id of that example.
@@ -156,8 +158,8 @@ Both controller *and* methods must have @resource tags to be included in documen
     # @response_field [String] example.highlight Information if the example is highlighted.
     #
     # @example_request {"id":1}
-    # @example_request_description Just requests the example with id 1. 
-    # @example_response 
+    # @example_request_description Just requests the example with id 1.
+    # @example_response
     #   ```json
     #   {
     #     "example": {
@@ -173,14 +175,14 @@ Both controller *and* methods must have @resource tags to be included in documen
     def show
       #...
     end
-  
+
     ##
     # Create an example:
-    # 
+    #
     # @resource /examples
     #
     # @action POST
-    # 
+    #
     # @required [Hash] example The object of the new example.
     # @required [String] example.title The title of the new example.
     # @required [String] example.text The text of the new example.
@@ -200,11 +202,11 @@ Both controller *and* methods must have @resource tags to be included in documen
 ## Development
 
 As always, you can see what tasks are available by running:
-    
+
     rake -T
 
 You can run the template locally over the included sample code by using the following rake tasks:
-    
+
     rake ex:clean
     rake ex:generate
 

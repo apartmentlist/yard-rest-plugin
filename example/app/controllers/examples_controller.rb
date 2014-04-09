@@ -1,27 +1,27 @@
 ##
-# A thing characteristic of its kind or illustrating a general rule: 
+# A thing characteristic of its kind or illustrating a general rule:
 # it's a good example of how European action can produce results | some of these carpets are among the finest examples of the period.
 #
 class ExamplesController
 
   ##
   # Get a collection of examples:
-  # 
+  #
   # @resource /examples
   #
   # @action GET
-  # 
+  #
   # @optional [Boolean] highlight Show only highlighted examples.
   #
-  # @response_field [Array] examples The collection of examples.  
+  # @response_field [Array] examples The collection of examples.
   # @response_field [Integer] examples[].id The id of that example.
   # @response_field [String] examples[].title The title of that example.
   # @response_field [String] examples[].text The text of that example.
   # @response_field [String] examples[].highlight Information if the example is highlighted.
   #
   # @example_request {}
-  # @example_request_description Just requests an index of samples. 
-  # @example_response 
+  # @example_request_description Just requests an index of samples.
+  # @example_response
   #   ```json
   #   {
   #     "examples": [{
@@ -38,10 +38,10 @@ class ExamplesController
   #   }
   #   ```
   # @example_response_description Responds with the index of examples.
-  # 
+  #
   # @example_request {"highlight": true}
   # @example_request_description Request only highlighted examples.
-  # @example_response 
+  # @example_response
   #   ```json
   #   {
   #     "examples": [{
@@ -60,11 +60,11 @@ class ExamplesController
 
   ##
   # Get a collection of examples:
-  # 
+  #
   # @resource /examples/:id
   #
   # @action GET
-  # 
+  #
   # @required [Integer] id The id of the example.
   #
   # @response_field [Integer] example.id The id of that example.
@@ -73,8 +73,8 @@ class ExamplesController
   # @response_field [String] example.highlight Information if the example is highlighted.
   #
   # @example_request {"id":1}
-  # @example_request_description Just requests the example with id 1. 
-  # @example_response 
+  # @example_request_description Just requests the example with id 1.
+  # @example_response
   #   ```json
   #   {
   #     "example": {
@@ -93,11 +93,15 @@ class ExamplesController
 
   ##
   # Create an example:
-  # 
+  #
   # @resource /examples
   #
   # @action POST
-  # 
+  #
+  # @response_code 200 The request was successful
+  # @response_code 401 The request is not authenticated
+  # @response_code 404 The request caused an error
+  #
   # @required [Hash] example The object of the new example.
   # @required [String] example.title The title of the new example.
   # @required [String] example.text The text of the new example.
